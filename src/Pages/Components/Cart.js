@@ -1,113 +1,110 @@
-import React, { Component } from "react";
-import "./Cart.scss";
+import React from "react";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import ProductItem from "./ProductItem";
 
-class Cart extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-      cartList: []
-    };
-  }
+function Cart({ isVisible, setIsVisible }) {
+  const cartItems = useSelector(store => store.cartReducer);
 
-  componentDidMount = () => {
-    this.setState({ cartList: this.props.cartItems });
-  };
+  console.log(cartItems);
+  return (
+    <Container isVisible={isVisible}>
+      <Header>
+        <HeaderText>
+          <CartText>Your Cart</CartText>
+          <CartAmount>({cartItems.length})</CartAmount>
+        </HeaderText>
+        <CloseBtn onClick={() => setIsVisible(false)}>
+          <CloseCart alt="close" src="https://i.ibb.co/C7Zh1zK/close.png" />
+        </CloseBtn>
+      </Header>
+      {cartItems ? (
+        <ProductItem />
+      ) : (
+        <CartEmptyText>
+          your
+          <br />
+          cart is
+          <br />
+          empty
+        </CartEmptyText>
+      )}
 
-  deleteItem = id => {
-    let filteredItems = this.state.cartList.filter(item => item.id !== id);
-    this.setState({ cartList: filteredItems });
-  };
-
-  render() {
-    const { count, cartList } = this.state;
-
-    return (
-      <section className="Cart visible">
-        <div className="cartContainer">
-          <section className="cartHeader">
-            <p>Your Cart ({count})</p>
-            <button onClick={this.props.handleCart}>
-              <img alt="close" src="https://i.ibb.co/C7Zh1zK/close.png" />
-            </button>
-          </section>
-          <div className="cartBodyWrapper">
-            <section className="cartListContainer">
-              {cartList && (
-                <ul className="cartList">
-                  {cartList.map(product => (
-                    <li className="itemContainer">
-                      <div className="itemDetailsWrapper">
-                        <div className="imageContainer">
-                          <img src={product.product_image} alt={product.name} />
-                        </div>
-                        <div className="itemDetails">
-                          <span>{product.name}</span>
-                          <div className="itemCounter">
-                            <button>-</button>
-                            <div>{count}</div>
-                            <button>+</button>
-                          </div>
-                          <div className="price">
-                            <span>{product.price}</span>
-                          </div>
-                          <button
-                            className="deleteBtn"
-                            onClick={() => this.deleteItem(product.id)}
-                          >
-                            DELETE
-                          </button>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
-            <section className="upsellProductsContainer">
-              <p>
-                <span>You may also like</span>
-              </p>
-              <div className="upsellProducts">
-                <div className="productCard">
-                  <div className="upsellPhotoWrapper">
-                    <a>
-                      <img src="https://i.ibb.co/265NLSH/olia-gozha-9-A-pe-Gr-Sb-Zc-unsplash.jpg" alt="random1"/>
-                    </a>
-                  </div>
-                  <p>product name here</p>
-                </div>
-                <div className="productCard">
-                  <div className="upsellPhotoWrapper">
-                    <a>
-                      <img src="https://i.ibb.co/jLLxFxf/ramez-e-nassif-Tz8s-KLv-SV08-unsplash.jpg" alt="random1"/>
-                    </a>
-                  </div>
-                  <p>product name here</p>
-                </div>
-                <div className="productCard">
-                  <div className="upsellPhotoWrapper">
-                    <a>
-                      <img src="https://i.ibb.co/265NLSH/olia-gozha-9-A-pe-Gr-Sb-Zc-unsplash.jpg" alt="random1"/>
-                    </a>
-                  </div>
-                  <p>product name here</p>
-                </div>
-              </div>
-            </section>
-            <section className="continueToPayment">
-              <div className="totalPrice">
-                <p>TOTAL</p>
-                <p>19.00€</p>
-              </div>
-              <div className="cartBtn">
-                <button>Continue to Payment</button>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-    );
-  }
+      <GoToCartBtn>go back to shopping</GoToCartBtn>
+    </Container>
+  );
 }
+
 export default Cart;
+
+const Container = styled.div`
+  display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
+  flex-direction: column;
+  /* justify-content: space-between; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5.7vh 4.5vw;
+  width: 50vw;
+  height: 100vh;
+  background-color: #ffe800;
+  z-index: 99;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5vh;
+  background-color: transparent;
+  border-bottom: 3px solid black;
+`;
+
+const HeaderText = styled.div`
+  display: flex;
+  background-color: transparent;
+`;
+
+const CartText = styled.div`
+  font-size: 46px;
+  font-weight: 700;
+  text-transform: none;
+  background-color: transparent;
+`;
+
+const CartAmount = styled(CartText)`
+  margin-left: 1.5vw;
+  background-color: transparent;
+`;
+
+const CloseBtn = styled.button`
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const CloseCart = styled.img`
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+`;
+
+const CartEmptyText = styled.div`
+  font-size: 7vw;
+  font-weight: 700;
+  line-height: 84%;
+  text-align: center;
+  background-color: transparent;
+`;
+
+const GoToCartBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: relative;
+  bottom: 0; */
+  width: 100%;
+  height: 7vh;
+  margin-top: 2vh;
+  font-weight: 600;
+  background-color: black;
+  color: white;
+`;

@@ -1,202 +1,178 @@
 {
   "product_list": [
-      {
-          "apply_on": [
-              "LIPS"
-          ],
-          "category": "COLOR",
-          "colors": [
-              {
-                  "color_id": 1,
-                  "color_name": "RED"
-              },
-              {
-                  "color_id": 2,
-                  "color_name": "PINK"
-              },
-              {
-                  "color_id": 3,
-                  "color_name": "HOTPINK"
-              }
-          ],
-          "model_image": "https://i.ibb.co/BjzbZXF/2020-10-26-9-56-50.png",
-          "name": "(S)LIP LIP FLUID",
-          "price": 18,
-          "product_id": 1,
-          "product_image": "https://i.ibb.co/XyM0DfF/Output-2.png"
-      },
-      {
-          "apply_on": [
-              "EYES"
-          ],
-          "category": "COLOR",
-          "colors": [
-              {
-                  "color_id": 4,
-                  "color_name": "BLACK"
-              },
-              {
-                  "color_id": 5,
-                  "color_name": "GREEN"
-              },
-              {
-                  "color_id": 6,
-                  "color_name": "PURPLE"
-              }
-          ],
-          "model_image": "https://i.ibb.co/F4JkQ9P/2020-10-26-10-04-08.png",
-          "name": "OUTLI(N)ER LINER MARKER",
-          "price": 14,
-          "product_id": 2,
-          "product_image": "https://i.ibb.co/XZdnYpc/eye-liner-removebg-preview.png"
-      },
-      {
-          "apply_on": [
-              "EYES"
-          ],
-          "category": "COLOR",
-          "colors": [
-              {
-                  "color_id": null,
-                  "color_name": ""
-              }
-          ],
-          "model_image": "https://i.ibb.co/2j95XZL/2020-10-26-9-55-47.png",
-          "name": "UNLASH ME MASCARA NERO",
-          "price": 19,
-          "product_id": 3,
-          "product_image": "https://i.ibb.co/ZLBZftF/mascara-removebg-preview.png"
-      },
-      {
-          "apply_on": [
-              "LIPS",
-              "FACE"
-          ],
-          "category": "COLOR",
-          "colors": [
-              {
-                  "color_id": 2,
-                  "color_name": "PINK"
-              }
-          ],
-          "model_image": "https://i.ibb.co/8mjhcr3/2020-10-27-5-55-47.png",
-          "name": "COMBO GOALS LIP’N’CHEEK",
-          "price": 19,
-          "product_id": 10,
-          "product_image": "https://i.ibb.co/C0BkFCt/Lip-removebg-preview.png"
-      },
-      {
-          "apply_on": [
-              "FACE"
-          ],
-          "category": "CARE",
-          "colors": [
-              {
-                  "color_id": null,
-                  "color_name": ""
-              }
-          ],
-          "model_image": "https://i.ibb.co/0D0xdxH/2020-10-26-9-42-47.png",
-          "name": "B.L.U.R. PRIMER BLUR MOISTURIZER",
-          "price": 26,
-          "product_id": 4,
-          "product_image": "https://i.ibb.co/2PmkX6j/perfume.png"
-      },
-      {
-          "apply_on": [
-              "FACE"
-          ],
-          "category": "CARE",
-          "colors": [
-              {
-                  "color_id": null,
-                  "color_name": ""
-              }
-          ],
-          "model_image": "https://i.ibb.co/h7rFXWh/photo-1555894755-b3d9b12236dd.jpg",
-          "name": "SOCOOLPINK PURFUME MIST",
-          "price": 24,
-          "product_id": 5,
-          "product_image": "https://i.ibb.co/jJ5TBVr/Output-1.png"
-      },
-      {
-          "apply_on": [
-              "EYES",
-              "FACE"
-          ],
-          "category": "CARE",
-          "colors": [
-              {
-                  "color_id": null,
-                  "color_name": ""
-              }
-          ],
-          "model_image": "https://i.ibb.co/k6ktznw/2020-10-27-6-04-24.png",
-          "name": "MOISTURE EYE OIL",
-          "price": 16,
-          "product_id": 6,
-          "product_image": "https://i.ibb.co/G5Xw4KJ/2020-10-27-1-51-00-removebg-preview.png"
-      },
-      {
-          "apply_on": [
-              "LIPS",
-              "FACE"
-          ],
-          "category": "CARE",
-          "colors": [
-              {
-                  "color_id": null,
-                  "color_name": ""
-              }
-          ],
-          "model_image": "https://i.ibb.co/hDfcg14/photo-1519699047748-de8e457a634e.jpg",
-          "name": "REAL FRESH LIP SCRUB",
-          "price": 14,
-          "product_id": 7,
-          "product_image": "https://i.ibb.co/m93CCKv/body-oil.png"
-      },
-      {
-          "apply_on": [
-              "EYES",
-              "FACE"
-          ],
-          "category": "CARE",
-          "colors": [
-              {
-                  "color_id": null,
-                  "color_name": ""
-              }
-          ],
-          "model_image": "https://i.ibb.co/vPMSDXC/2020-10-26-9-39-44.png",
-          "name": "COOLER EYE GEL",
-          "price": 16,
-          "product_id": 8,
-          "product_image": "https://i.ibb.co/5WvC4k2/2020-10-26-6-21-28-removebg-preview.png"
-      },
-      {
-          "apply_on": [
-              "LIPS"
-          ],
-          "category": "CARE",
-          "colors": [
-              {
-                  "color_id": 5,
-                  "color_name": "GREEN"
-              },
-              {
-                  "color_id": 2,
-                  "color_name": "PINK"
-              },
-              {
-                  "color_id": 7,
-                  "color_name": "YELLOW"
-              }
-          ],
-          "model_image": "https://i.ibb.co/ZG6FQg7/jimmy-fermin-bqe0-J0b26-RQ-unsplash.jpg",
-          "name": "SUPERBALM LIP BALM",
-          "price": 14,
-          "product_id": 9,
-          "product_image": "https://i.ibb.co/t3dCQWV/Output-4.png"
-      }
+    {
+      "apply_on": ["LIPS"],
+      "category": "COLOR",
+      "colors": [
+        {
+          "color_id": 1,
+          "color_name": "RED"
+        },
+        {
+          "color_id": 2,
+          "color_name": "PINK"
+        },
+        {
+          "color_id": 3,
+          "color_name": "HOTPINK"
+        }
+      ],
+      "model_image": "https://i.ibb.co/BjzbZXF/2020-10-26-9-56-50.png",
+      "name": "(S)LIP LIP FLUID",
+      "price": 18,
+      "product_id": 1,
+      "product_image": "https://i.ibb.co/XyM0DfF/Output-2.png"
+    },
+    {
+      "apply_on": ["EYES"],
+      "category": "COLOR",
+      "colors": [
+        {
+          "color_id": 4,
+          "color_name": "BLACK"
+        },
+        {
+          "color_id": 5,
+          "color_name": "GREEN"
+        },
+        {
+          "color_id": 6,
+          "color_name": "PURPLE"
+        }
+      ],
+      "model_image": "https://i.ibb.co/F4JkQ9P/2020-10-26-10-04-08.png",
+      "name": "OUTLI(N)ER LINER MARKER",
+      "price": 14,
+      "product_id": 2,
+      "product_image": "https://i.ibb.co/XZdnYpc/eye-liner-removebg-preview.png"
+    },
+    {
+      "apply_on": ["EYES"],
+      "category": "COLOR",
+      "colors": [
+        {
+          "color_id": null,
+          "color_name": ""
+        }
+      ],
+      "model_image": "https://i.ibb.co/2j95XZL/2020-10-26-9-55-47.png",
+      "name": "UNLASH ME MASCARA NERO",
+      "price": 19,
+      "product_id": 3,
+      "product_image": "https://i.ibb.co/ZLBZftF/mascara-removebg-preview.png"
+    },
+    {
+      "apply_on": ["LIPS", "FACE"],
+      "category": "COLOR",
+      "colors": [
+        {
+          "color_id": 2,
+          "color_name": "PINK"
+        }
+      ],
+      "model_image": "https://i.ibb.co/8mjhcr3/2020-10-27-5-55-47.png",
+      "name": "COMBO GOALS LIP’N’CHEEK",
+      "price": 19,
+      "product_id": 10,
+      "product_image": "https://i.ibb.co/C0BkFCt/Lip-removebg-preview.png"
+    },
+    {
+      "apply_on": ["FACE"],
+      "category": "CARE",
+      "colors": [
+        {
+          "color_id": null,
+          "color_name": ""
+        }
+      ],
+      "model_image": "https://i.ibb.co/0D0xdxH/2020-10-26-9-42-47.png",
+      "name": "B.L.U.R. PRIMER BLUR MOISTURIZER",
+      "price": 26,
+      "product_id": 4,
+      "product_image": "https://i.ibb.co/2PmkX6j/perfume.png"
+    },
+    {
+      "apply_on": ["FACE"],
+      "category": "CARE",
+      "colors": [
+        {
+          "color_id": null,
+          "color_name": ""
+        }
+      ],
+      "model_image": "https://i.ibb.co/h7rFXWh/photo-1555894755-b3d9b12236dd.jpg",
+      "name": "SOCOOLPINK PURFUME MIST",
+      "price": 24,
+      "product_id": 5,
+      "product_image": "https://i.ibb.co/jJ5TBVr/Output-1.png"
+    },
+    {
+      "apply_on": ["EYES", "FACE"],
+      "category": "CARE",
+      "colors": [
+        {
+          "color_id": null,
+          "color_name": ""
+        }
+      ],
+      "model_image": "https://i.ibb.co/k6ktznw/2020-10-27-6-04-24.png",
+      "name": "MOISTURE EYE OIL",
+      "price": 16,
+      "product_id": 6,
+      "product_image": "https://i.ibb.co/G5Xw4KJ/2020-10-27-1-51-00-removebg-preview.png"
+    },
+    {
+      "apply_on": ["LIPS", "FACE"],
+      "category": "CARE",
+      "colors": [
+        {
+          "color_id": null,
+          "color_name": ""
+        }
+      ],
+      "model_image": "https://i.ibb.co/hDfcg14/photo-1519699047748-de8e457a634e.jpg",
+      "name": "REAL FRESH LIP SCRUB",
+      "price": 14,
+      "product_id": 7,
+      "product_image": "https://i.ibb.co/m93CCKv/body-oil.png"
+    },
+    {
+      "apply_on": ["EYES", "FACE"],
+      "category": "CARE",
+      "colors": [
+        {
+          "color_id": null,
+          "color_name": ""
+        }
+      ],
+      "model_image": "https://i.ibb.co/vPMSDXC/2020-10-26-9-39-44.png",
+      "name": "COOLER EYE GEL",
+      "price": 16,
+      "product_id": 8,
+      "product_image": "https://i.ibb.co/5WvC4k2/2020-10-26-6-21-28-removebg-preview.png"
+    },
+    {
+      "apply_on": ["LIPS"],
+      "category": "CARE",
+      "colors": [
+        {
+          "color_id": 5,
+          "color_name": "GREEN"
+        },
+        {
+          "color_id": 2,
+          "color_name": "PINK"
+        },
+        {
+          "color_id": 7,
+          "color_name": "YELLOW"
+        }
+      ],
+      "model_image": "https://i.ibb.co/ZG6FQg7/jimmy-fermin-bqe0-J0b26-RQ-unsplash.jpg",
+      "name": "SUPERBALM LIP BALM",
+      "price": 14,
+      "product_id": 9,
+      "product_image": "https://i.ibb.co/t3dCQWV/Output-4.png"
+    }
   ]
 }

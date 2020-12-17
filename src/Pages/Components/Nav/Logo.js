@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Nav.scss";
+import "./Logo.scss";
 
 class Logo extends Component {
   render() {

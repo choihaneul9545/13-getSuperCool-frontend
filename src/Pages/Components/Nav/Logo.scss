@@ -9,6 +9,7 @@
 svg.bigLogo {
   background-color: transparent;
   width: 90vw;
+  height: auto;
   margin-top: 10%;
   animation: logo 3s;
   animation-fill-mode: both;
@@ -17,7 +18,7 @@ svg.bigLogo {
   }
 
   g {
-    fill: $default-yellow;
+    fill: #ffe800;
   }
 }
 
