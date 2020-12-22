@@ -18,19 +18,21 @@ function Cart({ isVisible, setIsVisible }) {
           <CloseCart alt="close" src="https://i.ibb.co/C7Zh1zK/close.png" />
         </CloseBtn>
       </Header>
-      {cartItems ? (
-        <ProductItem />
-      ) : (
-        <CartEmptyText>
-          your
-          <br />
-          cart is
-          <br />
-          empty
-        </CartEmptyText>
-      )}
+      <CartContainer>
+        {cartItems ? (
+          <ProductItem />
+        ) : (
+          <CartEmptyText>
+            your
+            <br />
+            cart is
+            <br />
+            empty
+          </CartEmptyText>
+        )}
 
-      <GoToCartBtn>go back to shopping</GoToCartBtn>
+        <GoToCartBtn>go back to shopping</GoToCartBtn>
+      </CartContainer>
     </Container>
   );
 }
@@ -40,7 +42,6 @@ export default Cart;
 const Container = styled.div`
   display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
   flex-direction: column;
-  /* justify-content: space-between; */
   position: absolute;
   top: 0;
   right: 0;
@@ -87,6 +88,14 @@ const CloseCart = styled.img`
   background-color: transparent;
 `;
 
+const CartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: transparent;
+`;
+
 const CartEmptyText = styled.div`
   font-size: 7vw;
   font-weight: 700;
@@ -99,8 +108,6 @@ const GoToCartBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* position: relative;
-  bottom: 0; */
   width: 100%;
   height: 7vh;
   margin-top: 2vh;

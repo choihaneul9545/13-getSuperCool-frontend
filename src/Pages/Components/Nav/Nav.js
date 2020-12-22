@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Cart from "../Cart";
 import styled from "styled-components";
 
 function Nav() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [count, setCount] = useState("3");
+  const cartItems = useSelector(store => store.cartReducer);
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
     <Container>
-      <Cart isVisible={isVisible} setIsVisible={setIsVisible} count={count} />
+      <Cart isVisible={isVisible} setIsVisible={setIsVisible} />
       <LinkItem className="link" to={"/"}>
         <Logo />
       </LinkItem>
@@ -43,7 +45,7 @@ function Nav() {
               stroke-width="35"
             ></path>
           </CircleSvg>
-          <CartCount>{count}</CartCount>
+          <CartCount>{cartItems.length}</CartCount>
         </CircleItem>
         <CircleItem>
           <LinkItem to={"/LoginRegister"}>
