@@ -7,16 +7,12 @@ import styled from "styled-components";
 
 function ProductList() {
   const [searchInput, setSearchInput] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filteredApplies, setFilteredApplies] = useState([]);
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [applyOnOptions, setApplyOnOptions] = useState([]);
-
-  const addCartProduct = product => {
-    setCartItems([...cartItems, product]);
-  };
 
   const handleFiltered = () => {
     if (categoryOptions.length > 0 && !applyOnOptions.length) {
@@ -82,7 +78,6 @@ function ProductList() {
         setFilteredApplies(res.product_list);
       });
   }, []);
-
   return (
     <Container className="ProductList">
       <Nav />
@@ -100,29 +95,13 @@ function ProductList() {
           handleSearchBox={handleSearchBox}
         />
         <ProductsContainer>
-          {filteredApplies.map(
-            ({
-              category,
-              apply_on,
-              color_options,
-              product_id,
-              name,
-              model_image,
-              product_image,
-              price
-            }) => (
-              <Product
-                category={category}
-                apply_on={apply_on}
-                id={product_id}
-                modelImg={model_image}
-                name={name}
-                productImg={product_image}
-                price={price}
-                addCartProduct={addCartProduct}
-              />
-            )
-          )}
+          {filteredApplies.map(item => (
+            <Product
+              item={item}
+              setIsVisible={setIsVisible}
+              isVisible={isVisible}
+            />
+          ))}
         </ProductsContainer>
       </MainContainer>
       <div className="photoBox">

@@ -6,7 +6,6 @@ import ProductItem from "./ProductItem";
 function Cart({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
 
-  console.log(cartItems);
   return (
     <Container isVisible={isVisible}>
       <Header>
@@ -20,7 +19,11 @@ function Cart({ isVisible, setIsVisible }) {
       </Header>
       <CartContainer>
         {cartItems ? (
-          <ProductItem />
+          <ProductItemsList>
+            {cartItems?.map(item => (
+              <ProductItem item={item} />
+            ))}
+          </ProductItemsList>
         ) : (
           <CartEmptyText>
             your
@@ -92,6 +95,12 @@ const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  background-color: transparent;
+`;
+
+const ProductItemsList = styled.div`
+  width: 100%;
   height: 100%;
   background-color: transparent;
 `;

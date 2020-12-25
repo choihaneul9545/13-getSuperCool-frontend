@@ -2,16 +2,23 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import logoImg from "./logoText.svg";
-import ColorOptionBox from "../ColorOptionBox/ColorOptionBox";
 import { withRouter } from "react-router-dom";
 import { addCart } from "../../../../store/actions";
 
-function Product({ id, modelImg, name, productImg, price, showCart, product }) {
+function Product({ item, setIsVisible, isVisible }) {
+  const dispatch = useDispatch();
+
+  const AddToCart = () => {
+    dispatch(addCart(item));
+    setIsVisible(true);
+  };
   return (
-    <Container id={id} onClick={() => this.props.history.push(`/shop/${id}`)}>
-      <ColorOptionBox />
+    <Container
+      id={item.product_id}
+      // onClick={() => this.props.history.push(`/shop/${item.product_id}`)}
+    >
       <ProductThumnail className="productThumnail">
-        <ModelImg src={modelImg} alt={modelImg} />
+        <ModelImg src={item.model_image} alt={item.model_image} />
         <LogoText className="logoText" src={logoImg} alt="logoImg" />
       </ProductThumnail>
       <LogoIcon
@@ -19,15 +26,19 @@ function Product({ id, modelImg, name, productImg, price, showCart, product }) {
         src="https://i.ibb.co/wS6dvTj/icontrans.png"
         alt="logoImg"
       />
-      <ProductImg className="productImg" src={productImg} alt={name} />
+      <ProductImg
+        className="productImg"
+        src={item.product_image}
+        alt={item.name}
+      />
 
       <ProductDesc>
-        <ProductName>{name}</ProductName>
+        <ProductName>{item.name}</ProductName>
         <ProductPrice>
-          {price}.00<Price>€</Price>
+          {item.price}.00<Price>€</Price>
         </ProductPrice>
       </ProductDesc>
-      <Button onClick={() => showCart(product)}>ADD TO CART</Button>
+      <Button onClick={AddToCart}>ADD TO CART</Button>
     </Container>
   );
 }

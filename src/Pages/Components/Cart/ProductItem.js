@@ -1,19 +1,33 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { deleteCart } from "../../../store/actions";
 
-function ProductItem() {
+function ProductItem({ item }) {
+  const items = useSelector(store => store.cartReducer);
+  const dispatch = useDispatch();
+
+  const filteredItems = id => {
+    const cartItems = items.filter(item => {
+      return item.product_id !== id;
+    });
+    dispatch(deleteCart(cartItems));
+  };
+
   return (
     <ProductItemContainer>
-      <ItemImg src="https://cdn.shopify.com/s/files/1/0355/1114/0396/products/superfluid_ott15933_1.jpg?v=1607942621" />
+      <ItemImg src={item.product_image} />
       <ItemDesc>
-        <ItemName>OUTLI(N)ER - WHITE</ItemName>
+        <ItemName>{item.name}</ItemName>
         <CountController>
           <ControlBtn>-</ControlBtn>
           <Count>3</Count>
           <ControlBtn>+</ControlBtn>
         </CountController>
-        <Price>14.00</Price>
-        <DeleteBtn>delete</DeleteBtn>
+        <Price>{item.price}€</Price>
+        <DeleteBtn onClick={() => filteredItems(item.product_id)}>
+          delete
+        </DeleteBtn>
       </ItemDesc>
     </ProductItemContainer>
   );
@@ -46,6 +60,7 @@ const ItemDesc = styled.div`
 const ItemName = styled.h2`
   display: flex;
   align-items: center;
+  width: 8vw;
   background-color: transparent;
 `;
 

@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
-import Cart from "../Cart";
+import Cart from "../Cart/Cart";
 import styled from "styled-components";
 
-function Nav() {
+function Nav({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
-  const [isVisible, setIsVisible] = useState(true);
 
   return (
     <Container>
