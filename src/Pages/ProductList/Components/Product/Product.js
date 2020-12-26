@@ -12,6 +12,7 @@ function Product({ item, setIsVisible, isVisible }) {
     dispatch(addCart(item));
     setIsVisible(true);
   };
+
   return (
     <Container
       id={item.product_id}
@@ -108,14 +109,14 @@ const leaveDeg = keyframes`
 `;
 
 const Container = styled.div`
-  width: 21vw;
-  height: 47vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  width: 21vw;
+  height: 47vh;
   margin-bottom: 5vh;
   margin-right: 4vw;
-  position: relative;
   overflow: hidden;
   background-color: rgb(247, 247, 247);
 
@@ -226,10 +227,11 @@ const ProductPrice = styled(ProductName)`
 `;
 
 const Price = styled.span`
+  position: relative;
+  top: -30%;
+  right: 0;
   background-color: transparent;
   font-size: 0.7vw;
-  top: -30%;
-  right: -140%;
 `;
 
 const Button = styled.button`

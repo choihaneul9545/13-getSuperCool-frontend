@@ -80,7 +80,7 @@ function ProductList() {
   }, []);
   return (
     <Container className="ProductList">
-      <Nav />
+      <Nav isVisible={isVisible} setIsVisible={setIsVisible} />
       <Header>
         <ShopText>SHOP</ShopText>
         <ProductCount>(18 PRODUCT)</ProductCount>

@@ -47,4 +47,5 @@ const SearchBtn = styled.button`
   line-height: 6vh;
   font-weight: 500;
   cursor: pointer;
+  background-color: transparent;
 `;

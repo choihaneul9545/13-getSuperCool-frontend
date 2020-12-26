@@ -21,7 +21,7 @@ function ProductItem({ item }) {
         <ItemName>{item.name}</ItemName>
         <CountController>
           <ControlBtn>-</ControlBtn>
-          <Count>3</Count>
+          <Count>1</Count>
           <ControlBtn>+</ControlBtn>
         </CountController>
         <Price>{item.price}€</Price>
