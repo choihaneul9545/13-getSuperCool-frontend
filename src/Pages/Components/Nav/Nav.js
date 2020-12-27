@@ -189,12 +189,13 @@ const CartCount = styled.div`
   align-items: center;
   position: absolute;
   top: -5px;
-  right: -2px;
-  width: 25px;
-  height: 25px;
+  right: -3px;
+  width: 1.5vw;
+  height: 1.5vw;
+  padding-top: 0.2vh;
   border-radius: 50%;
   background-color: black;
-  font-size: 11px;
   color: white;
+  font-size: 0.8vh;
   font-weight: 800;
 `;

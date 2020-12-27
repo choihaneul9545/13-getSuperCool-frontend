@@ -16,7 +16,7 @@ function Product({ item, setIsVisible, isVisible }) {
   return (
     <Container
       id={item.product_id}
-      // onClick={() => this.props.history.push(`/shop/${item.product_id}`)}
+      onClick={() => this.props.history.push(`/shop/${this.prams.id}`)}
     >
       <ProductThumnail className="productThumnail">
         <ModelImg src={item.model_image} alt={item.model_image} />
@@ -141,6 +141,11 @@ const Container = styled.div`
   }
 `;
 
+const ProductContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 const ProductThumnail = styled.div`
   background-color: rgb(247, 247, 247);
   margin: 0;
@@ -243,4 +248,5 @@ const Button = styled.button`
   color: rgb(255, 255, 255);
   position: absolute;
   bottom: 20px;
+  cursor: pointer;
 `;
