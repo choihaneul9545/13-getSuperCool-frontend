@@ -15,11 +15,11 @@ function Menubar({
     applyOn: true
   });
   const [isActiveCategory, setIsActiveCategory] = useState({
-    color: false,
-    care: false,
-    lips: false,
-    eyes: false,
-    face: false
+    COLOR: false,
+    CARE: false,
+    LIPS: false,
+    EYES: false,
+    FACE: false
   });
 
   const handleClickCategory = name => {
@@ -51,7 +51,6 @@ function Menubar({
   };
 
   const handleAccordionMenu = menu => {
-    console.log(menu);
     setIsActiveAccordion({
       ...isActiveAccordion,
       [menu]: !isActiveAccordion[menu]
@@ -186,7 +185,6 @@ const CategoryItem = styled.li`
   &:hover::before {
     width: 3.8vw;
     height: 1px;
-  }
   }
 `;
 

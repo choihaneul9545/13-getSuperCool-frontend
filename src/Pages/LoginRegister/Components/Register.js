@@ -2,7 +2,6 @@ import React from "react";
 import "./Register.scss";
 import { Link, withRouter } from "react-router-dom";
 
-
 const API = "http://10.58.7.186:8000/account/register";
 
 class Register extends React.Component {
@@ -74,8 +73,6 @@ class Register extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log("================================");
-        console.log("백앤드에서 오는 응답 메세지: ", result);
         if (result.message === "SUCCESS") {
           alert("회원가입 성공");
         } else {

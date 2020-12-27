@@ -1,44 +1,53 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import logoImg from "./logoText.svg";
 import { withRouter } from "react-router-dom";
-import { addCart } from "../../../../store/actions";
+import { addCart, increment } from "../../../../store/actions";
 
 function Product({ item, setIsVisible, isVisible }) {
+  const cartItems = useSelector(store => store.cartReducer);
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const AddToCart = () => {
-    dispatch(addCart(item));
-    setIsVisible(true);
+    if (cartItems.includes(item)) {
+      dispatch(increment());
+    } else {
+      dispatch(addCart(item));
+      setIsVisible(true);
+    }
   };
 
   return (
-    <Container
-      id={item.product_id}
-      onClick={() => this.props.history.push(`/shop/${this.prams.id}`)}
-    >
-      <ProductThumnail className="productThumnail">
-        <ModelImg src={item.model_image} alt={item.model_image} />
-        <LogoText className="logoText" src={logoImg} alt="logoImg" />
-      </ProductThumnail>
-      <LogoIcon
-        className="logoIcon"
-        src="https://i.ibb.co/wS6dvTj/icontrans.png"
-        alt="logoImg"
-      />
-      <ProductImg
-        className="productImg"
-        src={item.product_image}
-        alt={item.name}
-      />
+    <Container>
+      <ProductContainer
+        id={item.product_id}
+        onClick={() => history.push(`/shop/${item.product_id}`)}
+      >
+        <ProductThumnail className="productThumnail">
+          <ModelImg src={item.model_image} alt={item.model_image} />
+          <LogoText className="logoText" src={logoImg} alt="logoImg" />
+        </ProductThumnail>
+        <LogoIcon
+          className="logoIcon"
+          src="https://i.ibb.co/wS6dvTj/icontrans.png"
+          alt="logoImg"
+        />
+        <ProductImg
+          className="productImg"
+          src={item.product_image}
+          alt={item.name}
+        />
 
-      <ProductDesc>
-        <ProductName>{item.name}</ProductName>
-        <ProductPrice>
-          {item.price}.00<Price>€</Price>
-        </ProductPrice>
-      </ProductDesc>
+        <ProductDesc>
+          <ProductName className="productName">{item.name}</ProductName>
+          <ProductPrice>
+            {item.price}.00<Price>€</Price>
+          </ProductPrice>
+        </ProductDesc>
+      </ProductContainer>
       <Button onClick={AddToCart}>ADD TO CART</Button>
     </Container>
   );
@@ -109,19 +118,23 @@ const leaveDeg = keyframes`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   width: 21vw;
   height: 47vh;
   margin-bottom: 5vh;
   margin-right: 4vw;
+`;
+
+const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background-color: rgb(247, 247, 247);
 
   &:hover {
-    .productThumbnail {
+    .productThumnail {
       animation: ${enterMouse} 0.3s ease-out;
       animation-fill-mode: both;
       .logoText {
@@ -138,12 +151,10 @@ const Container = styled.div`
       animation: ${enterDeg} 0.2s ease-in;
       animation-fill-mode: both;
     }
+    .productName {
+      color: #ffe800;
+    }
   }
-`;
-
-const ProductContainer = styled.div`
-  width: 100%;
-  height: 100%;
 `;
 
 const ProductThumnail = styled.div`
@@ -218,7 +229,7 @@ const ProductName = styled.div`
   background-color: transparent;
   font-size: 0.9vw;
   font-weight: 500;
-  margin: 0 25px;
+  margin: 0;
 `;
 
 const ProductPrice = styled(ProductName)`
@@ -229,6 +240,7 @@ const ProductPrice = styled(ProductName)`
   position: relative;
   transform: rotate(-3.17deg);
   padding-left: 5px;
+  margin-right: 13%;
 `;
 
 const Price = styled.span`
@@ -240,13 +252,14 @@ const Price = styled.span`
 `;
 
 const Button = styled.button`
-  font-size: 0.9vw;
-  font-weight: 600;
+  position: absolute;
+  left: 1.5vw;
+  bottom: 2vh;
   width: 18vw;
   height: 8vh;
+  font-size: 0.9vw;
+  font-weight: 600;
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
-  position: absolute;
-  bottom: 20px;
   cursor: pointer;
 `;

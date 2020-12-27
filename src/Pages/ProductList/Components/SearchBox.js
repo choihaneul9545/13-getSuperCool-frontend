@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function SearchBox({ handleChange, searchInput, handleDefaultCategory }) {
+function SearchBox({
+  handleChange,
+  handleSearchBox,
+  searchInput,
+  handleDefaultCategory
+}) {
   return (
     <Container>
       <SearchText
@@ -13,7 +18,7 @@ function SearchBox({ handleChange, searchInput, handleDefaultCategory }) {
         onMouseDown={handleDefaultCategory}
         value={searchInput}
       />
-      <SearchBtn>
+      <SearchBtn onClick={handleSearchBox}>
         <i class="fas fa-search"></i>
       </SearchBtn>
     </Container>

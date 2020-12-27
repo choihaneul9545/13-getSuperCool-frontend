@@ -18,7 +18,7 @@ function Cart({ isVisible, setIsVisible }) {
         </CloseBtn>
       </Header>
       <CartContainer>
-        {cartItems ? (
+        {cartItems[0] ? (
           <ProductItemsList>
             {cartItems?.map(item => (
               <ProductItem item={item} />
@@ -106,6 +106,7 @@ const ProductItemsList = styled.div`
 `;
 
 const CartEmptyText = styled.div`
+  margin-top: 25%;
   font-size: 7vw;
   font-weight: 700;
   line-height: 84%;

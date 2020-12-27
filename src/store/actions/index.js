@@ -11,3 +11,10 @@ export const deleteCart = items => {
     payload: items
   };
 };
+
+export const increment = () => {
+  return { type: "INCREMENT" };
+};
+export const decrement = () => {
+  return { type: "DECREMENT" };
+};

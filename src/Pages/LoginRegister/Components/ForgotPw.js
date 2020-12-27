@@ -1,7 +1,7 @@
 import React from "react";
 import "./ForgotPw.scss";
-import Footer from "../../Components/Footer/Footer"
-import Nav from "../../Components/Nav/Nav"
+import Footer from "../../Components/Footer/Footer";
+import Nav from "../../Components/Nav/Nav";
 
 const API = "http://10.58.7.186:8000/account/forgot-password";
 
@@ -45,9 +45,6 @@ export default class ForgotPw extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("================================");
-        console.log("백앤드에서 오는 응답 메세지: ", response);
-
         if (response.new_pw) {
           alert(`성공! 임시 비번: ${response.new_pw}`);
         } else {
@@ -98,7 +95,7 @@ export default class ForgotPw extends React.Component {
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

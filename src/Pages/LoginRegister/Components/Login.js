@@ -2,8 +2,6 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./Login.scss";
 
-
-
 const API = "http://10.58.7.186:8000/account/login";
 
 class Login extends React.Component {
@@ -47,9 +45,6 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("================================");
-        console.log("백앤드에서 오는 응답 메세지: ", response);
-
         if (response.AUTHORIZATION) {
           this.props.history.push("/");
           localStorage.setItem("token", response.AUTHORIZATION);

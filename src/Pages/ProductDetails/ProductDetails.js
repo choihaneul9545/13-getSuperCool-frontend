@@ -57,15 +57,11 @@ class ProductDetails extends React.Component {
           });
         });
     }
-    console.log(this.state.colorData, "haha", this.state.colorsData);
   }
 
   onScroll = () => {
     const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
     const scrollTop = this.myRef.current.scrollTop;
-    console.log(
-      `onScroll, window.scrollY: ${scrollY} myRef.scrollTop: ${scrollTop}`
-    );
     this.setState({
       scrollTop: scrollTop
     });
@@ -97,7 +93,6 @@ class ProductDetails extends React.Component {
       colorData,
       productData
     } = this.state;
-    console.log(this.state.scrollTop);
     return (
       <div ref={this.myRef} onScroll={this.onScroll} className="ProductDetails">
         <Nav />

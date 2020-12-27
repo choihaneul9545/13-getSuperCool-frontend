@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Contact.scss";
 import { countryOptions, subjectOptions } from "./Config";
-import Nav from "../Components/Nav/Nav"
+import Nav from "../Components/Nav/Nav";
 
 const API = "http://10.58.7.186:8000/account/inquirie";
 
@@ -21,13 +21,10 @@ export default class Contact extends Component {
   handleInputValue = e => {
     const { value, name } = e.target;
 
-    this.setState(
-      {
-        [name]: value,
-        requiredInput: false
-      },
-      () => console.log(this.state.subjectValue)
-    );
+    this.setState({
+      [name]: value,
+      requiredInput: false
+    });
   };
 
   handleValidate = () => {
@@ -72,8 +69,6 @@ export default class Contact extends Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log("================================");
-        console.log("백앤드에서 오는 응답 메세지: ", result);
         if (result.message === "SUCCESS") {
           alert("메세지 보내기 완료");
         } else {
@@ -83,7 +78,6 @@ export default class Contact extends Component {
   };
 
   render() {
-    console.log(this.state.subjectValue, this.state.countryValue);
     const { emailValue, nameValue, subjectValue, messageValue } = this.state;
 
     let validBtn =
@@ -92,8 +86,6 @@ export default class Contact extends Component {
       messageValue.length > 3 &&
       emailValue.includes("@") &&
       subjectValue;
-
-    console.log(emailValue, nameValue.length, messageValue.length);
     return (
       <div className="Contact">
         <Nav />

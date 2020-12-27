@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { deleteCart } from "../../../store/actions";
+import { deleteCart, increment, decrement } from "../../../store/actions";
 
 function ProductItem({ item }) {
   const items = useSelector(store => store.cartReducer);
+  const count = useSelector(store => store.countReducer);
   const dispatch = useDispatch();
 
   const filteredItems = id => {
@@ -14,17 +15,29 @@ function ProductItem({ item }) {
     dispatch(deleteCart(cartItems));
   };
 
+  const addCount = () => {
+    dispatch(increment());
+  };
+
+  const deleteCount = () => {
+    if (count.number === 1) {
+      alert("최소 선택 수량입니다");
+    } else {
+      dispatch(decrement());
+    }
+  };
+  const SUM_PRICE = count.number * item.price;
   return (
     <ProductItemContainer>
       <ItemImg src={item.product_image} />
       <ItemDesc>
         <ItemName>{item.name}</ItemName>
         <CountController>
-          <ControlBtn>-</ControlBtn>
-          <Count>1</Count>
-          <ControlBtn>+</ControlBtn>
+          <ControlBtn onClick={deleteCount}>-</ControlBtn>
+          <Count>{count.number}</Count>
+          <ControlBtn onClick={addCount}>+</ControlBtn>
         </CountController>
-        <Price>{item.price}€</Price>
+        <Price>{SUM_PRICE}.00€</Price>
         <DeleteBtn onClick={() => filteredItems(item.product_id)}>
           delete
         </DeleteBtn>
@@ -74,6 +87,8 @@ const CountController = styled.div`
 
 const ControlBtn = styled.button`
   background-color: transparent;
+  padding: 1vh;
+  cursor: pointer;
 `;
 
 const Count = styled.div`
