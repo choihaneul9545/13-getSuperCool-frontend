@@ -5,13 +5,24 @@ import ProductItem from "./ProductItem";
 
 function Cart({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
+  let count = 0.0;
 
+  const sum = () => {
+    cartItems.map(item => {
+      return (count += item.quantity);
+    });
+    return count;
+  };
+
+  sum();
+
+  console.log(sum);
   return (
     <Container isVisible={isVisible}>
       <Header>
         <HeaderText>
           <CartText>Your Cart</CartText>
-          <CartAmount>({cartItems.length})</CartAmount>
+          <CartAmount>({count})</CartAmount>
         </HeaderText>
         <CloseBtn onClick={() => setIsVisible(false)}>
           <CloseCart alt="close" src="https://i.ibb.co/C7Zh1zK/close.png" />
@@ -19,11 +30,17 @@ function Cart({ isVisible, setIsVisible }) {
       </Header>
       <CartContainer>
         {cartItems[0] ? (
-          <ProductItemsList>
-            {cartItems?.map(item => (
-              <ProductItem item={item} />
-            ))}
-          </ProductItemsList>
+          <>
+            <ProductItemsList>
+              {cartItems?.map(item => (
+                <ProductItem item={item} />
+              ))}
+            </ProductItemsList>
+            <TotalPrice>
+              <Total>Total</Total>
+              <Price>.00</Price>
+            </TotalPrice>
+          </>
         ) : (
           <CartEmptyText>
             your
@@ -104,6 +121,19 @@ const ProductItemsList = styled.div`
   height: 100%;
   background-color: transparent;
 `;
+
+const TotalPrice = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+`;
+
+const Total = styled.span`
+  font-size: 2.5vh;
+  font-weight: 700;
+`;
+
+const Price = styled(Total)``;
 
 const CartEmptyText = styled.div`
   margin-top: 25%;

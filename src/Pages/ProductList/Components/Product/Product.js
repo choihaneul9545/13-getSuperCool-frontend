@@ -6,17 +6,18 @@ import logoImg from "./logoText.svg";
 import { withRouter } from "react-router-dom";
 import { addCart, plusCount } from "../../../../store/actions";
 
-function Product({ item, setIsVisible, isVisible }) {
+function Product({ item, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
   const dispatch = useDispatch();
   let history = useHistory();
 
   const AddToCart = idx => {
-    if (cartItems.includes(item)) {
+    const result = cartItems.find(({ product_id }) => product_id === idx);
+    if (result) {
       const plusResult = cartItems.map(product => {
         if (product.product_id === idx)
-          return { ...item, quantity: item.quantity + 1 };
-        return item;
+          return { ...product, quantity: product.quantity + 1 };
+        return product;
       });
       dispatch(plusCount(plusResult));
     } else {

@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Cart from "../Cart/Cart";
 import styled from "styled-components";
+import { plusCount } from "../../../store/actions";
 
 function Nav({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
+  let count = 0.0;
 
-  const cartCountArr = () => {
-    return cartItems.map(item => {
-      return item.quantity;
+  const sum = () => {
+    cartItems.map(item => {
+      return (count += item.quantity);
     });
+    return count;
   };
 
-  const count = cartCountArr();
-  // let sum = count.reduce((a, b) => a + b);
+  sum();
 
-  console.log(count);
   return (
     <Container>
       <Cart isVisible={isVisible} setIsVisible={setIsVisible} />
@@ -54,7 +55,7 @@ function Nav({ isVisible, setIsVisible }) {
               stroke-width="35"
             ></path>
           </CircleSvg>
-          <CartCount>{cartItems.length}</CartCount>
+          <CartCount>{count}</CartCount>
         </CircleItem>
         <CircleItem>
           <LinkItem to={"/LoginRegister"}>
