@@ -8,16 +8,16 @@ import { plusCount } from "../../../store/actions";
 
 function Nav({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
-  let count = 0.0;
 
   const sum = () => {
+    let count = 0.0;
     cartItems.map(item => {
       return (count += item.quantity);
     });
     return count;
   };
 
-  sum();
+  let countNum = sum();
 
   return (
     <Container>
@@ -55,7 +55,7 @@ function Nav({ isVisible, setIsVisible }) {
               stroke-width="35"
             ></path>
           </CircleSvg>
-          <CartCount>{count}</CartCount>
+          <CartCount>{countNum}</CartCount>
         </CircleItem>
         <CircleItem>
           <LinkItem to={"/LoginRegister"}>

@@ -8,13 +8,14 @@ function Cart({ isVisible, setIsVisible }) {
   let count = 0.0;
 
   const sum = () => {
+    let count = 0.0;
     cartItems.map(item => {
       return (count += item.quantity);
     });
     return count;
   };
 
-  sum();
+  let countNum = sum();
 
   console.log(sum);
   return (
@@ -22,7 +23,7 @@ function Cart({ isVisible, setIsVisible }) {
       <Header>
         <HeaderText>
           <CartText>Your Cart</CartText>
-          <CartAmount>({count})</CartAmount>
+          <CartAmount>({countNum})</CartAmount>
         </HeaderText>
         <CloseBtn onClick={() => setIsVisible(false)}>
           <CloseCart alt="close" src="https://i.ibb.co/C7Zh1zK/close.png" />
