@@ -4,6 +4,10 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return [...state, action.payload];
     case "DELETE_ITEM":
       return [...action.payload];
+    case "PLUS_COUNT":
+      return [...action.payload];
+    case "MINUS_COUNT":
+      return [...action.payload];
     default:
       return state;
   }

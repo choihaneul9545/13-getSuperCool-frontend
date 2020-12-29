@@ -12,9 +12,16 @@ export const deleteCart = items => {
   };
 };
 
-export const increment = () => {
-  return { type: "INCREMENT" };
+export const plusCount = items => {
+  return {
+    type: "PLUS_COUNT",
+    payload: items
+  };
 };
-export const decrement = () => {
-  return { type: "DECREMENT" };
+
+export const minusCount = items => {
+  return {
+    type: "MINUS_COUNT",
+    payload: items
+  };
 };

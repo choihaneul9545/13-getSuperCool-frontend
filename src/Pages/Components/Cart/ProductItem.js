@@ -1,11 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { deleteCart, increment, decrement } from "../../../store/actions";
+import { deleteCart, plusCount, minusCount } from "../../../store/actions";
 
 function ProductItem({ item }) {
   const items = useSelector(store => store.cartReducer);
-  const count = useSelector(store => store.countReducer);
   const dispatch = useDispatch();
 
   const filteredItems = id => {
@@ -15,27 +14,43 @@ function ProductItem({ item }) {
     dispatch(deleteCart(cartItems));
   };
 
-  const addCount = () => {
-    dispatch(increment());
+  const handlePlusCount = id => {
+    const plusResult = items.map(item => {
+      if (item.product_id === id)
+        return { ...item, quantity: item.quantity + 1 };
+      return item;
+    });
+    dispatch(plusCount(plusResult));
   };
 
-  const deleteCount = () => {
-    if (count.number === 1) {
+  const handleMinusCount = id => {
+    if (item.quantity === 1) {
       alert("최소 선택 수량입니다");
     } else {
-      dispatch(decrement());
+      const MinusResult = items.map(item => {
+        if (item.product_id === id)
+          return { ...item, quantity: item.quantity - 1 };
+        return item;
+      });
+      dispatch(plusCount(MinusResult));
     }
   };
-  const SUM_PRICE = count.number * item.price;
+
+  const SUM_PRICE = item.quantity * item.price;
+
   return (
     <ProductItemContainer>
       <ItemImg src={item.product_image} />
       <ItemDesc>
         <ItemName>{item.name}</ItemName>
         <CountController>
-          <ControlBtn onClick={deleteCount}>-</ControlBtn>
-          <Count>{count.number}</Count>
-          <ControlBtn onClick={addCount}>+</ControlBtn>
+          <ControlBtn onClick={() => handleMinusCount(item.product_id)}>
+            -
+          </ControlBtn>
+          <Count>{item.quantity}</Count>
+          <ControlBtn onClick={() => handlePlusCount(item.product_id)}>
+            +
+          </ControlBtn>
         </CountController>
         <Price>{SUM_PRICE}.00€</Price>
         <DeleteBtn onClick={() => filteredItems(item.product_id)}>

@@ -3,6 +3,7 @@
     {
       "apply_on": ["LIPS"],
       "category": "COLOR",
+      "quantity": 1,
       "colors": [
         {
           "color_id": 1,
@@ -26,6 +27,7 @@
     {
       "apply_on": ["EYES"],
       "category": "COLOR",
+      "quantity": 1,
       "colors": [
         {
           "color_id": 4,
@@ -49,6 +51,7 @@
     {
       "apply_on": ["EYES"],
       "category": "COLOR",
+      "quantity": 1,
       "colors": [
         {
           "color_id": null,
@@ -64,6 +67,7 @@
     {
       "apply_on": ["LIPS", "FACE"],
       "category": "COLOR",
+      "quantity": 1,
       "colors": [
         {
           "color_id": 2,
@@ -94,6 +98,7 @@
     {
       "apply_on": ["FACE"],
       "category": "CARE",
+      "quantity": 1,
       "colors": [
         {
           "color_id": null,
@@ -109,6 +114,7 @@
     {
       "apply_on": ["EYES", "FACE"],
       "category": "CARE",
+      "quantity": 1,
       "colors": [
         {
           "color_id": null,
@@ -124,6 +130,7 @@
     {
       "apply_on": ["LIPS", "FACE"],
       "category": "CARE",
+      "quantity": 1,
       "colors": [
         {
           "color_id": null,
@@ -139,6 +146,7 @@
     {
       "apply_on": ["EYES", "FACE"],
       "category": "CARE",
+      "quantity": 1,
       "colors": [
         {
           "color_id": null,
@@ -154,6 +162,7 @@
     {
       "apply_on": ["LIPS"],
       "category": "CARE",
+      "quantity": 1,
       "colors": [
         {
           "color_id": 5,

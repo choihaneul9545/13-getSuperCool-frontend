@@ -4,16 +4,21 @@ import { useHistory } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import logoImg from "./logoText.svg";
 import { withRouter } from "react-router-dom";
-import { addCart, increment } from "../../../../store/actions";
+import { addCart, plusCount } from "../../../../store/actions";
 
 function Product({ item, setIsVisible, isVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const AddToCart = () => {
+  const AddToCart = idx => {
     if (cartItems.includes(item)) {
-      dispatch(increment());
+      const plusResult = cartItems.map(product => {
+        if (product.product_id === idx)
+          return { ...item, quantity: item.quantity + 1 };
+        return item;
+      });
+      dispatch(plusCount(plusResult));
     } else {
       dispatch(addCart(item));
       setIsVisible(true);
@@ -48,7 +53,7 @@ function Product({ item, setIsVisible, isVisible }) {
           </ProductPrice>
         </ProductDesc>
       </ProductContainer>
-      <Button onClick={AddToCart}>ADD TO CART</Button>
+      <Button onClick={() => AddToCart(item.product_id)}>ADD TO CART</Button>
     </Container>
   );
 }

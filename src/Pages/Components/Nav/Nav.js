@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
@@ -8,6 +8,16 @@ import styled from "styled-components";
 function Nav({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
 
+  const cartCountArr = () => {
+    return cartItems.map(item => {
+      return item.quantity;
+    });
+  };
+
+  const count = cartCountArr();
+  // let sum = count.reduce((a, b) => a + b);
+
+  console.log(count);
   return (
     <Container>
       <Cart isVisible={isVisible} setIsVisible={setIsVisible} />

@@ -1,9 +1,10 @@
 const countReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return { ...state, number: state.number + 1 };
-    case "DECREMENT":
-      return { ...state, number: state.number - 1 };
+    case "PLUS_COUNT":
+      return [...action.payload];
+
+    case "MINUS_COUNT":
+      return [...action.payload];
     default:
       return state;
   }
@@ -11,4 +12,4 @@ const countReducer = (state = INITIAL_STATE, action) => {
 
 export default countReducer;
 
-const INITIAL_STATE = { number: 1 };
+const INITIAL_STATE = [];
