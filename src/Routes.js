@@ -6,7 +6,6 @@ import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import LoginRegister from "./Pages/LoginRegister/LoginRegister";
 import Contact from "./Pages/Contact/Contact";
 import ForgotPw from "./Pages/LoginRegister/Components/ForgotPw";
-import Product from "./Pages/ProductList/Components/Product/Product";
 
 class Routes extends React.Component {
   render() {

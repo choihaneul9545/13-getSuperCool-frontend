@@ -8,9 +8,11 @@ import styled from "styled-components";
 function ProductList() {
   const [searchInput, setSearchInput] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filteredApplies, setFilteredApplies] = useState([]);
   const [products, setProducts] = useState([]);
+
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [applyOnOptions, setApplyOnOptions] = useState([]);
 
