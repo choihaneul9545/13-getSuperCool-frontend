@@ -13,40 +13,13 @@ function ProductList() {
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [applyOnOptions, setApplyOnOptions] = useState([]);
 
-  const handleFiltered = () => {
-    if (categoryOptions.length > 0 && !applyOnOptions.length) {
-      const filterdApplies = products.filter(product =>
-        categoryOptions.includes(product.category)
-      );
-      setFilteredApplies(filterdApplies);
-    } else if (!categoryOptions.length && applyOnOptions.length > 0) {
-      const filterdApplies = products.filter(product => {
-        const check = el => applyOnOptions.includes(el);
-        return product.apply_on.some(check);
-      });
-      setFilteredApplies(filterdApplies);
-    } else if (!categoryOptions.length && !applyOnOptions.length) {
-      setFilteredApplies(products);
-    } else {
-      const filterdApplies = products
-        .filter(product => categoryOptions.includes(product.category))
-        .filter(product => {
-          const check = el => applyOnOptions.includes(el);
-          return product.apply_on.some(check);
-        });
-      setFilteredApplies(filterdApplies);
-    }
-  };
-
   const getCategories = name => {
     const isIncluded = categoryOptions.includes(name);
-    if (isIncluded) {
-      categoryOptions.filter(selected => selected !== name);
-      handleFiltered();
-    } else {
-      setCategoryOptions([...categoryOptions, name]);
-      handleFiltered();
-    }
+    isIncluded
+      ? setCategoryOptions(
+          categoryOptions.filter(selected => selected !== name)
+        )
+      : setCategoryOptions([...categoryOptions, name]);
   };
 
   const getApplies = name => {
@@ -54,8 +27,34 @@ function ProductList() {
     isIncluded
       ? setApplyOnOptions(applyOnOptions.filter(selected => selected !== name))
       : setApplyOnOptions([...applyOnOptions, name]);
-    handleFiltered();
   };
+
+  const handleFiltered = () => {
+    if (categoryOptions.length > 0 && !applyOnOptions.length) {
+      const filterdApplies = products.filter(product =>
+        categoryOptions.includes(product.category)
+      );
+      return filterdApplies;
+    } else if (!categoryOptions.length && applyOnOptions.length > 0) {
+      const filterdApplies = products.filter(product => {
+        const check = el => applyOnOptions.includes(el);
+        return product.apply_on.some(check);
+      });
+      return filterdApplies;
+    } else if (!categoryOptions.length && !applyOnOptions.length) {
+      return products;
+    } else {
+      const filterdApplies = products
+        .filter(product => categoryOptions.includes(product.category))
+        .filter(product => {
+          const check = el => applyOnOptions.includes(el);
+          return product.apply_on.some(check);
+        });
+      return filterdApplies;
+    }
+  };
+
+  const filterdProducts = handleFiltered();
 
   const handleSearchBox = () => {
     setFilteredApplies(
@@ -96,7 +95,7 @@ function ProductList() {
           handleSearchBox={handleSearchBox}
         />
         <ProductsContainer>
-          {filteredApplies.map(item => (
+          {filterdProducts.map(item => (
             <Product
               item={item}
               setIsVisible={setIsVisible}

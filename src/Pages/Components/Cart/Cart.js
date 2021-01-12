@@ -5,7 +5,6 @@ import ProductItem from "./ProductItem";
 
 function Cart({ isVisible, setIsVisible }) {
   const cartItems = useSelector(store => store.cartReducer);
-  let count = 0.0;
 
   const sum = () => {
     let count = 0.0;
@@ -17,7 +16,6 @@ function Cart({ isVisible, setIsVisible }) {
 
   let countNum = sum();
 
-  console.log(sum);
   return (
     <Container isVisible={isVisible}>
       <Header>

@@ -14,6 +14,11 @@ function Menubar({
     category: true,
     applyOn: true
   });
+  // const [color, setColor] = useState(false);
+  // const [care, setCare] = useState(false);
+  // const [lips, setLips] = useState(false);
+  // const [eyes, setEyes] = useState(false);
+  // const [face. setFace] = useState(false)
   const [isActiveCategory, setIsActiveCategory] = useState({
     COLOR: false,
     CARE: false,
@@ -22,17 +27,12 @@ function Menubar({
     FACE: false
   });
 
-  const handleClickCategory = name => {
-    getCategories(name);
-    setSearchInput("");
-    setIsActiveCategory({
-      ...isActiveCategory,
-      [name]: !isActiveCategory[name]
-    });
-  };
-
-  const handleClickApplies = name => {
-    getApplies(name);
+  const handelClickmenu = (name, category) => {
+    if (category === "category") {
+      getCategories(name);
+    } else if (category === "applies") {
+      getApplies(name);
+    }
     setSearchInput("");
     setIsActiveCategory({
       ...isActiveCategory,
@@ -58,6 +58,7 @@ function Menubar({
   };
 
   console.log(isActiveCategory);
+
   return (
     <Container>
       <SearchBox
@@ -73,13 +74,13 @@ function Menubar({
         style={{ display: isActiveAccordion.category ? "block" : "none" }}
       >
         <CategoryItem
-          onClick={() => handleClickCategory("COLOR")}
+          onClick={() => handelClickmenu("COLOR", "category")}
           className={isActiveCategory.COLOR ? "clicked" : ""}
         >
           COLOR
         </CategoryItem>
         <CategoryItem
-          onClick={() => handleClickCategory("CARE")}
+          onClick={() => handelClickmenu("CARE", "category")}
           className={isActiveCategory.CARE ? "clicked" : ""}
         >
           CARE
@@ -93,19 +94,19 @@ function Menubar({
         style={{ display: isActiveAccordion.applyOn ? "block" : "none" }}
       >
         <CategoryItem
-          onClick={() => handleClickApplies("LIPS")}
+          onClick={() => handelClickmenu("LIPS", "applies")}
           className={isActiveCategory.LIPS ? "clicked" : ""}
         >
           LIPS
         </CategoryItem>
         <CategoryItem
-          onClick={() => handleClickApplies("EYES")}
+          onClick={() => handelClickmenu("EYES", "applies")}
           className={isActiveCategory.EYES ? "clicked" : ""}
         >
           EYES
         </CategoryItem>
         <CategoryItem
-          onClick={() => handleClickApplies("FACE")}
+          onClick={() => handelClickmenu("FACE", "applies")}
           className={isActiveCategory.FACE ? "clicked" : ""}
         >
           FACE
