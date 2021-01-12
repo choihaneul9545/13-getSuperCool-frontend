@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Nav from "../Components/Nav/Nav";
 import Menubar from "./Components/Menubar";
 import Product from "./Components/Product/Product";
@@ -29,32 +29,33 @@ function ProductList() {
       : setApplyOnOptions([...applyOnOptions, name]);
   };
 
-  const handleFiltered = () => {
-    if (categoryOptions.length > 0 && !applyOnOptions.length) {
-      const filterdApplies = products.filter(product =>
+  const handleFiltered = useCallback(() => {
+    if (!!categoryOptions.length && !applyOnOptions.length) {
+      return products.filter(product =>
         categoryOptions.includes(product.category)
       );
-      return filterdApplies;
-    } else if (!categoryOptions.length && applyOnOptions.length > 0) {
-      const filterdApplies = products.filter(product => {
+    }
+
+    if (!categoryOptions.length && applyOnOptions.length > 0) {
+      return products.filter(product => {
         const check = el => applyOnOptions.includes(el);
         return product.apply_on.some(check);
       });
-      return filterdApplies;
-    } else if (!categoryOptions.length && !applyOnOptions.length) {
-      return products;
-    } else {
-      const filterdApplies = products
-        .filter(product => categoryOptions.includes(product.category))
-        .filter(product => {
-          const check = el => applyOnOptions.includes(el);
-          return product.apply_on.some(check);
-        });
-      return filterdApplies;
     }
-  };
 
-  const filterdProducts = handleFiltered();
+    if (!categoryOptions.length && !applyOnOptions.length) {
+      return products;
+    }
+
+    return products.filter(product => {
+      const isCategoryMatched = categoryOptions.includes(product.category);
+      const isApplyMatched = product.apply_on.some(el =>
+        applyOnOptions.includes(el)
+      );
+
+      return isCategoryMatched && isApplyMatched;
+    });
+  }, [categoryOptions, applyOnOptions, products]);
 
   const handleSearchBox = () => {
     setFilteredApplies(
@@ -77,7 +78,10 @@ function ProductList() {
       });
   }, []);
 
-  console.log(categoryOptions);
+  useEffect(() => {
+    setFilteredApplies(handleFiltered());
+  }, [applyOnOptions, categoryOptions, handleFiltered]);
+
   return (
     <Container className="ProductList">
       <Nav isVisible={isVisible} setIsVisible={setIsVisible} />
@@ -95,7 +99,7 @@ function ProductList() {
           handleSearchBox={handleSearchBox}
         />
         <ProductsContainer>
-          {filterdProducts.map(item => (
+          {filteredApplies.map(item => (
             <Product
               item={item}
               setIsVisible={setIsVisible}

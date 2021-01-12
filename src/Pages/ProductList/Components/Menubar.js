@@ -57,8 +57,6 @@ function Menubar({
     });
   };
 
-  console.log(isActiveCategory);
-
   return (
     <Container>
       <SearchBox
