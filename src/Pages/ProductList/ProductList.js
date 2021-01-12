@@ -8,11 +8,8 @@ import styled from "styled-components";
 function ProductList() {
   const [searchInput, setSearchInput] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [filteredApplies, setFilteredApplies] = useState([]);
   const [products, setProducts] = useState([]);
-
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [applyOnOptions, setApplyOnOptions] = useState([]);
 
@@ -43,12 +40,13 @@ function ProductList() {
 
   const getCategories = name => {
     const isIncluded = categoryOptions.includes(name);
-    isIncluded
-      ? setCategoryOptions(
-          categoryOptions.filter(selected => selected !== name)
-        )
-      : setCategoryOptions([...categoryOptions, name]);
-    handleFiltered();
+    if (isIncluded) {
+      categoryOptions.filter(selected => selected !== name);
+      handleFiltered();
+    } else {
+      setCategoryOptions([...categoryOptions, name]);
+      handleFiltered();
+    }
   };
 
   const getApplies = name => {
@@ -76,10 +74,11 @@ function ProductList() {
       .then(res => res.json())
       .then(res => {
         setProducts(res.product_list);
-        setFilteredProducts(res.product_list);
         setFilteredApplies(res.product_list);
       });
   }, []);
+
+  console.log(categoryOptions);
   return (
     <Container className="ProductList">
       <Nav isVisible={isVisible} setIsVisible={setIsVisible} />
