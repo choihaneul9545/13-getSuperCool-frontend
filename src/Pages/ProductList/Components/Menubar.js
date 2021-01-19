@@ -14,11 +14,7 @@ function Menubar({
     category: true,
     applyOn: true
   });
-  // const [color, setColor] = useState(false);
-  // const [care, setCare] = useState(false);
-  // const [lips, setLips] = useState(false);
-  // const [eyes, setEyes] = useState(false);
-  // const [face. setFace] = useState(false)
+
   const [isActiveCategory, setIsActiveCategory] = useState({
     COLOR: false,
     CARE: false,
